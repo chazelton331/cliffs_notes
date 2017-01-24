@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cliff's Notes</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <span class="logo">Cliff's Notes</span>
+      <span class="nav">
+        <%= link_to "Features (#{Feature.count})", features_path %> • <%= link_to "Notes (#{Note.count})", notes_path %> • <%= link_to "Reminders (#{Reminder.count})", reminders_path %> 
+      </span>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

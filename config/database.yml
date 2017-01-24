@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: cliffsnotes_development
+
+test:
+  <<: *default
+  database: cliffsnotes_test
+
+production:
+  <<: *default
+  database: cliffsnotes_production
+  username: cliffsnotes
+  password: <%= ENV['CLIFFSNOTES_DATABASE_PASSWORD'] %>

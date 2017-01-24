@@ -1,0 +1,25 @@
+<%= link_to 'New Note', new_note_path %>
+<br />
+
+<p id="notice"><%= notice %></p>
+
+<h1>Notes</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td colspan=6><b>Description</b></td>
+      <td><b>Action</b></td>
+    </tr>
+
+    <% @notes.each do |note| %>
+      <tr>
+        <td colspan=6><%= feature.description %></td>
+        <td>
+          <%= link_to 'Edit', edit_note_path(note) %>
+          <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
