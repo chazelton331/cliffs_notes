@@ -11,7 +11,7 @@
 
     <% @notes.each do |note| %>
       <tr>
-        <td colspan=6><%= note.description %></td>
+        <td colspan=6><%= render_links_in(note.description).html_safe %></td>
         <td>
           <%= link_to 'Edit', edit_note_path(note) %>
           <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -14,7 +14,7 @@
     <% @features.each do |feature| %>
       <tr>
         <td><%= feature.priority %></td>
-        <td colspan=4><%= feature.description %></td>
+        <td colspan=4><%= render_links_in(feature.description).html_safe %></td>
         <td><%= feature.squad %></td>
         <td>
           <%= link_to 'Edit', edit_feature_path(feature) %>

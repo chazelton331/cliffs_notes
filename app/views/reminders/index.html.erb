@@ -13,7 +13,7 @@
     <% @reminders.each do |reminder| %>
       <tr>
         <td><%= reminder.due_date %></td>
-        <td colspan=5><%= reminder.description %></td>
+        <td colspan=5><%= render_links_in(reminder.description).html_safe %></td>
         <td>
           <%= link_to 'Edit', edit_reminder_path(reminder) %>
           <%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %>
