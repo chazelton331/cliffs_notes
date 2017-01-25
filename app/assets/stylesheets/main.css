@@ -12,3 +12,8 @@
 .nav {
   padding-left: 20px;
 }
+
+textarea {
+  width: 300px;
+  height: 200px;
+}
