@@ -1,8 +1,8 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_note, only: [ :show, :edit, :bump, :update, :destroy ]
 
   def index
-    @notes = Note.all
+    @notes = Note.order("updated_at DESC")
   end
 
   def new
@@ -26,9 +26,14 @@ class NotesController < ApplicationController
     end
   end
 
+  def bump
+    @note.touch
+    redirect_to notes_path, notice: 'Note was successfully bumped.'
+  end
+
   def update
     if @note.update(note_params)
-      redirect_to @note, notice: 'Note was successfully updated.'
+      redirect_to notes_path, notice: 'Note was successfully updated.'
     else
       render :edit
     end
