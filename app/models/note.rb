@@ -9,11 +9,7 @@
 #
 
 class Note < ApplicationRecord
-
-  DESCRIPTION_LIMIT = 5000
-
-  validates :description,
-            presence: true,
-            length: { maximum: DESCRIPTION_LIMIT }
+  validates :description, presence: true,
+                          length: { maximum: DESCRIPTION_LIMIT }
 
 end

@@ -12,23 +12,29 @@ require 'test_helper'
 
 class NoteTest < ActiveSupport::TestCase
 
-  test "description too long" do
-    bad_note = Note.new(description: 'a' * (Note::DESCRIPTION_LIMIT + 1))
-
-    assert(bad_note.invalid?)
-
-    assert_equal([ "Description is too long (maximum is #{Note::DESCRIPTION_LIMIT} characters)" ], bad_note.errors.full_messages)
+  setup do
+    @note = Note.new(description: "This is OK")
   end
 
-  test "description required" do
-    bad_note1 = Note.new(description: nil)
-    bad_note2 = Note.new(description: "" )
+  test "description too long" do
+    @note.description = 'a' * (Note::DESCRIPTION_LIMIT + 1)
 
-    assert(bad_note1.invalid?)
-    assert(bad_note2.invalid?)
+    assert(@note.invalid?)
+    assert_equal([ "Description is too long (maximum is #{Note::DESCRIPTION_LIMIT} characters)" ], @note.errors.full_messages)
+  end
 
-    assert_equal([ "Description can't be blank" ], bad_note1.errors.full_messages)
-    assert_equal([ "Description can't be blank" ], bad_note2.errors.full_messages)
+  test "description can't be nil" do
+    @note.description = nil
+
+    assert(@note.invalid?)
+    assert_equal([ "Description can't be blank" ], @note.errors.full_messages)
+  end
+
+  test "description can't be ''" do
+    @note.description = ""
+
+    assert(@note.invalid?)
+    assert_equal([ "Description can't be blank" ], @note.errors.full_messages)
   end
 
 end
