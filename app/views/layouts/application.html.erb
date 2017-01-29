@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cliff's Notes</title>
+    <title>DoughNotes</title>
     <%= csrf_meta_tags %>
 
     <%= favicon_link_tag 'favicon.ico' %>
@@ -12,15 +12,15 @@
 
   <body>
     <div class="header">
-      <span class="logo">Cliff's Notes</span>
-      <span class="nav">
-        <%= link_to "Features (#{Feature.count})", features_path %>
-        <%= link_to '[+]', new_feature_path %> • 
-        <%= link_to "Notes (#{Note.count})", notes_path %>
-        <%= link_to '[+]', new_note_path %> • 
-        <%= link_to "Reminders (#{Reminder.count})", reminders_path %>
-        <%= link_to '[+]', new_reminder_path %>
+
+      <span class="logo">
+        <%= link_to "D🍩ughN🍩tes", notes_path %>
       </span>
+
+      <span class="nav">
+        <%= link_to "Add New", new_note_path %>
+      </span>
+
     </div>
 
     <%= yield %>

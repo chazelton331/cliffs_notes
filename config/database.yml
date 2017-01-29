@@ -9,10 +9,10 @@ development:
 
 test:
   <<: *default
-  database: cliffsnotes_test
+  database: dough_notes_test
 
 production:
   <<: *default
-  database: cliffsnotes_production
-  username: cliffsnotes
-  password: <%= ENV['CLIFFSNOTES_DATABASE_PASSWORD'] %>
+  database: dough_notes_production
+  username: dough
+  password: <%= ENV['DOUGH_NOTES_DATABASE_PASSWORD'] %>

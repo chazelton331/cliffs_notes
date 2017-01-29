@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: [ :show, :edit, :bump, :update, :destroy ]
 
   def index
-    @notes = Note.order("updated_at DESC")
+    @notes = Note.order("priority DESC")
   end
 
   def new
@@ -10,7 +10,6 @@ class NotesController < ApplicationController
   end
 
   def show
-    redirect_to edit_note_path(@feature.id)
   end
 
   def edit
@@ -20,20 +19,24 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to notes_path, notice: 'Note was successfully created.'
+      redirect_to @note, notice: 'Note was successfully created.'
     else
       render :new
     end
   end
 
   def bump
-    @note.touch
+    highest_priority = Note.order("priority DESC").limit(1).first.try(:priority).to_i
+
+    @note.priority = highest_priority + 1
+    @note.save!
+
     redirect_to notes_path, notice: 'Note was successfully bumped.'
   end
 
   def update
     if @note.update(note_params)
-      redirect_to notes_path, notice: 'Note was successfully updated.'
+      redirect_to @note, notice: 'Note was successfully updated.'
     else
       render :edit
     end
@@ -51,6 +54,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.fetch(:note, {}).permit(:description)
+    params.fetch(:note, {}).permit(:description, :priority, :keywords, :due_date)
   end
 end

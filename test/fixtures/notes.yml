@@ -6,6 +6,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :text
+#  priority    :integer          default("0"), not null
+#  keywords    :string
+#  due_date    :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

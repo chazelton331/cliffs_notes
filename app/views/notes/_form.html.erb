@@ -16,6 +16,19 @@
     <%= f.text_area :description %>
     <br />
 
+    <%= f.label :priority %>
+    <%= f.number_field :priority %>
+    <br />
+
+    <%= f.label :keywords %>
+    <%= f.text_field :keywords %>
+    <br />
+
+    <%= f.label :due_date %>
+    <%= f.datetime_local_field :due_date %>
+    <br />
+    <br />
+
     <%= f.submit %>
   </div>
 <% end %>

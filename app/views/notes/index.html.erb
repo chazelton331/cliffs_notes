@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Notes</h1>
-
 <table>
   <tbody>
     <tr>
-      <td colspan=6><b>Description</b></td>
+      <td><b>Due Date</b></td>
+      <td><b>Description</b></td>
+      <td><b>Keywords</b></td>
+      <td><b>Priority</b></td>
       <td><b>Action</b></td>
     </tr>
 
     <% @notes.each do |note| %>
       <tr>
-        <td colspan=6><%= render_links_in(note.description).html_safe %></td>
+        <td><%= note.due_date.present? ? "in #{time_ago_in_words(note.due_date)}" : "-" %></td>
+        <td><%= link_to note.description.truncate(75), note_path(note.id) %></td>
+        <td><%= note.keywords %></td>
+        <td><%= note.priority %></td>
         <td>
           <%= link_to 'Bump', bump_note_path(note), method: :post %>
           <%= link_to 'Edit', edit_note_path(note) %>

@@ -6,6 +6,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :text
+#  priority    :integer          default("0"), not null
+#  keywords    :string
+#  due_date    :datetime
 #
 
 require 'test_helper'
