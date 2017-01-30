@@ -15,7 +15,7 @@
       <tr>
         <td><%= note.due_date.present? ? "in #{time_ago_in_words(note.due_date)}" : "-" %></td>
         <td>
-          <%= link_to note.description.gsub(/#/, '').truncate(75), note_path(note.id) %>
+          <%= link_to note.description.gsub(/#|\*/, '').truncate(75), note_path(note.id) %>
         </td>
         <td><%= note.keywords %></td>
         <td>

@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
 
-<hr />
+<%= link_to 'Edit this note', edit_note_path(@note) %>
+
 <br />
 
 <%= @markdown.render(@note.description).html_safe %>

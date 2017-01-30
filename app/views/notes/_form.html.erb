@@ -1,3 +1,5 @@
+<h5>The top 5 priorities in your list are <%= top_priorities.to_sentence %></h5>
+
 <%= form_for(note) do |f| %>
   <% if note.errors.any? %>
     <div id="error_explanation">
@@ -29,6 +31,6 @@
     <br />
     <br />
 
-    <%= f.submit %>
+    <%= f.submit %> <%= link_to 'Cancel', notes_path %>
   </div>
 <% end %>
