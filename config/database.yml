@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: cliffsnotes_development
+  database: dough_notes_development
 
 test:
   <<: *default

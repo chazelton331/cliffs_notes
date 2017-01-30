@@ -1,11 +1,19 @@
 class RollFeaturesAndRemindersIntoNotes < ActiveRecord::Migration[5.0]
   def up
-    Feature.all.each do |feature|
-      Note.create!(description: feature.description, keywords: feature.squad, priority: feature.priority)
+    begin
+      Feature.all.each do |feature|
+        Note.create!(description: feature.description, keywords: feature.squad, priority: feature.priority)
+      end
+    rescue
+      puts "Feature model does not exist... skipping"
     end
 
-    Reminder.all.each do |reminder|
-      Note.create!(description: reminder.description, due_date: reminder.due_date)
+    begin
+      Reminder.all.each do |reminder|
+        Note.create!(description: reminder.description, due_date: reminder.due_date)
+      end
+    rescue
+      puts "Reminder model does not exist... skipping"
     end
   end
 
