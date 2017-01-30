@@ -10,6 +10,18 @@ class NotesController < ApplicationController
   end
 
   def show
+    renderer_options = {
+      filter_html:         true,
+      hard_wrap:           true,
+      link_attributes:     { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks:  true,
+    }
+
+    @markdown = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(renderer_options),
+      { autolink: true, superscript: true, disable_indented_code_blocks: true }
+    )
   end
 
   def edit

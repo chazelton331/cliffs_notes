@@ -5,6 +5,4 @@
 <hr />
 <br />
 
-<%= render_links_in(@note.description).html_safe %>
-
-
+<%= @markdown.render(@note.description).html_safe %>

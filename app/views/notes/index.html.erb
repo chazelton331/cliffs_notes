@@ -7,19 +7,27 @@
       <td><b>Description</b></td>
       <td><b>Keywords</b></td>
       <td><b>Priority</b></td>
-      <td><b>Action</b></td>
+      <td></td>
+      <td></td>
     </tr>
 
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.due_date.present? ? "in #{time_ago_in_words(note.due_date)}" : "-" %></td>
-        <td><%= link_to note.description.truncate(75), note_path(note.id) %></td>
-        <td><%= note.keywords %></td>
-        <td><%= note.priority %></td>
         <td>
-          <%= link_to 'Bump', bump_note_path(note), method: :post %>
-          <%= link_to 'Edit', edit_note_path(note) %>
-          <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to note.description.gsub(/#/, '').truncate(75), note_path(note.id) %>
+        </td>
+        <td><%= note.keywords %></td>
+        <td>
+          <%= note.priority %>
+          &nbsp;&nbsp;
+          <%= link_to '<span data-icon="{"></span>'.html_safe, bump_note_path(note), method: :post %>
+        </td>
+        <td>
+          <%= link_to '<span data-icon="p"></span>'.html_safe, edit_note_path(note) %>
+        </td>
+        <td>
+          <%= link_to '<span data-icon="#"></span>'.html_safe, note, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

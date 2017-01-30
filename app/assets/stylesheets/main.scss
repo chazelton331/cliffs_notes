@@ -22,14 +22,14 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
 
   &:visited {
     color: #666;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    text-decoration: underline;
   }
 }
 
@@ -59,6 +59,15 @@ div {
   display: table;
 }
 
+label {
+  display: block;
+}
+
+textarea {
+  width: 300px;
+  height: 200px;
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -84,6 +93,32 @@ div {
   }
 }
 
-label {
-  display: block;
+.header {
+  margin-bottom: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid black;
 }
+
+.logo {
+  font-weight: bold;
+  font-size: 2.5em;
+  color: #583019;
+}
+
+a.logo-link {
+  color: #583019;
+  text-decoration: none;
+
+  &:visited {
+    color: #583019;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.nav {
+  padding-left: 20px;
+}
+

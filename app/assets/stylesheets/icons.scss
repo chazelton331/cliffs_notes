@@ -1,0 +1,19 @@
+// -----------------------------------------------------
+// Pictos icon font styles
+// -----------------------------------------------------
+
+.pictos {
+  font-family: 'Pictos';
+}
+
+[data-icon]:before {
+  font-family: 'Pictos';
+  content: attr(data-icon);
+  margin-right: 8px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.no-margins[data-icon]:before {
+  margin-right: 0;
+}
